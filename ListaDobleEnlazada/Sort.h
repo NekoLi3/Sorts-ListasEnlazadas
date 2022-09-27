@@ -18,12 +18,11 @@ inline void Sort<T>::inserccionSortAsc(Lista<T> A){
 		
 		Iter* jota = actual->getAnter();
 
-		while ((jota!=A.root() || actual != A.end()) && (*jota->getInfo() > *actual->getInfo())) {
+		while ((jota != A.root() && actual != A.end()) && (*jota->getInfo() > *actual->getInfo())) {
 			jota = jota->getAnter();
 
 		} 
-		A.swap(jota,actual);
-		actual = actual->getSig();
+		actual = A.swap(jota, actual)->getSig();
 		//A[j + 1] = cur; //lugar correcto de cur
 	}
 }

@@ -2,7 +2,7 @@
 #include <sstream>
 #include <string>
 
-#include "Nodo.cpp"
+#include "Nodo.h"
 
 template<class T>
 class Lista {
@@ -28,8 +28,7 @@ public:
     void borrarFinal();
     string toString();
 
-    void swap(Nodo<T>* ref, Nodo<T>* act);   
-    
+    Nodo<T>* swap(Nodo<T>* ref, Nodo<T>* act);
     
 };
 
@@ -175,14 +174,16 @@ string Lista<T>::toString() {
 }
 
 template<class T>
-inline void Lista<T>::swap(Nodo<T>* ref, Nodo<T>* act){
-    cout << toString() << endl;
+inline Nodo<T>* Lista<T>::swap(Nodo<T>* ref, Nodo<T>* act) {
+
     agregar(ref, act->getInfo());
     agregar(act, ref->getInfo());
 
-    borrar(ref->getAnter());
-    borrar(act->getAnter());
+
+    borrar(ref->getSig());
+
+    borrar(act);
     cout << toString() << endl;
-    
+    return ref;
 
 }
