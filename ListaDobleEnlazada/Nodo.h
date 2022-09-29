@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include <sstream>
- using namespace std;
+using namespace std;
 
 template <class  T>
 class Nodo{
