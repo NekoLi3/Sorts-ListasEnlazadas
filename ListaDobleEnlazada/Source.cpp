@@ -1,7 +1,7 @@
 #include "Lista.h"
 #include "Sort.h"
 
-int main() {
+int main(){
 	//pruebas
 	Lista<int> lst, piko;
 	lst.agregarFinal(new int(4));
@@ -26,8 +26,6 @@ int main() {
 	piko.agregarIni(new int(193));
 	piko.agregarIni(new int(11));
 	piko.agregarIni(new int(173));
-	lst.agregarFinal(new int(8));
-	lst.agregarFinal(new int(34));
 	lst.agregarFinal(new int(-91));
 
 	Sort<int>::insertionSortAsc(piko);
