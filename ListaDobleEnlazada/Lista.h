@@ -38,6 +38,7 @@ Lista<T>::Lista() {
     aux = new Nodo<T>;
     raiz->setSig(aux);
     aux->setAnter(raiz);
+    siz = 0;
 }
 
 template<class T>
@@ -66,26 +67,22 @@ bool Lista<T>::estaVacia() {
 }
 
 template<class T>
-inline int Lista<T>::size()
-{
+inline int Lista<T>::size(){
     return siz;
 }
 
 template<class T>
-inline Nodo<T>* Lista<T>::root()
-{
+inline Nodo<T>* Lista<T>::root(){
     return raiz->getSig();
 }
 
 template<class T>
-inline Nodo<T>* Lista<T>::end()
-{
+inline Nodo<T>* Lista<T>::end(){
     return aux;
 }
 
 template<class T>
-T* Lista<T>::valorIni()
-{
+T* Lista<T>::valorIni(){
     Nodo<T>* temp = raiz->getSig();
     if (temp == NULL) {
         return NULL;
@@ -95,8 +92,7 @@ T* Lista<T>::valorIni()
 }
 
 template<class T>
-T* Lista<T>::valorFinal()
-{
+T* Lista<T>::valorFinal(){
     Nodo<T>* temp = aux->getSig();
     if (temp == NULL) {
         return NULL;
@@ -106,8 +102,7 @@ T* Lista<T>::valorFinal()
 }
 
 template<class T>
-void Lista<T>::agregar(Nodo<T>* ref,T* valor)
-{
+void Lista<T>::agregar(Nodo<T>* ref,T* valor){
     Nodo<T>* nuevo = new Nodo<T>();
     nuevo->setInfo(valor);
     nuevo->setSig(ref);
@@ -136,19 +131,17 @@ void Lista<T>::borrar(Nodo<T>* ref) {
     Nodo<T>* sig = ref->getSig();
     ant->setSig(sig);
     sig->setAnter(ant);
-    //delete ref;
+    delete ref;
     siz--;
 }
 
 template<class T>
-void Lista<T>::borrarIni()
-{
+void Lista<T>::borrarIni(){
     borrar(raiz->getSig());
 }
 
 template<class T>
-void Lista<T>::borrarFinal()
-{
+void Lista<T>::borrarFinal(){
     borrar(aux->getAnter());
 }
 
@@ -176,14 +169,9 @@ string Lista<T>::toString() {
 template<class T>
 inline Nodo<T>* Lista<T>::swap(Nodo<T>* ref, Nodo<T>* act) {
 
-    agregar(ref, act->getInfo());
-    agregar(act, ref->getInfo());
-
-
-    borrar(ref->getSig());
-
-    borrar(act);
-    cout << toString() << endl;
-    return ref;
+    T* aux = act->getInfo();
+    act->setInfo(ref->getInfo());
+    ref->setInfo(aux);
+    return act;
 
 }

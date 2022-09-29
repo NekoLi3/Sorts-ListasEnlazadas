@@ -1,46 +1,55 @@
 #pragma once
 #include "Lista.h"
+
 template <class T>
 class Sort{
 public: 
 	typedef typename Nodo<T> Iter;
-	static void inserccionSortAsc(Lista<T> A);
-	//static void bubleSort(Lista<T> lst);
+
+	static void insertionSortAsc(Lista<T> A);
+	static void bubleSort(Lista<T> lst);
 
 };
 
 template <class T>
-inline void Sort<T>::inserccionSortAsc(Lista<T> A){
+inline void Sort<T>::insertionSortAsc(Lista<T> A){
 	Iter* actual = A.root()->getSig();
-	
 
 	for (int i = 1, n=A.size(); i < n; i++) {
-		
 		Iter* jota = actual->getAnter();
 
-		while ((jota != A.root() && actual != A.end()) && (*jota->getInfo() > *actual->getInfo())) {
-			jota = jota->getAnter();
+		while ((actual != A.end()) && (*jota->getInfo() > *jota->getSig()->getInfo())){
 
+			A.swap(jota, jota->getSig());
+			if(jota == A.root()){
+				break;
+			}
+
+			jota = jota->getAnter();
 		} 
-		actual = A.swap(jota, actual)->getSig();
-		//A[j + 1] = cur; //lugar correcto de cur
+
+		actual = actual->getSig();
+
 	}
 }
-//
-//template <class T>
-//inline void Sort<T>::bubleSort(Lista<T> vec)
-//{
-//	for (int i = 0; i < n; i++) {
-//		for (int j = 1; j < n - i; j++) {
-//			int prec = vec[j - 1];
-//			int succ = vec[j];
-//			if (prec > succ) {
-//				int tmp = vec[j - 1];
-//				vec[j - 1] = vec[j];
-//				vec[j] = tmp;
-//			}
-//		}
-//	}
-//}
 
+template <class T>
+inline void Sort<T>::bubleSort(Lista<T> vec){
+	Iter* scc;
+	Iter* jota;
 
+	for (int i = 0,n=vec.size(); i < n; i++){		
+		 jota = vec.root()->getSig();
+
+		for (int j = 1; j < n - i; j++, jota=jota->getSig()) {
+
+			scc = jota->getAnter();
+
+			if (*scc->getInfo() > *scc->getSig()->getInfo()){
+				jota=vec.swap(scc, scc->getSig());
+
+			}
+		}
+
+	}
+}

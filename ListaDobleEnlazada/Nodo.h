@@ -2,10 +2,9 @@
 #include <iostream>
 #include <sstream>
  using namespace std;
-    template <class  T>
 
-class Nodo
-{
+template <class  T>
+class Nodo{
 
     private:
         T* info;
@@ -21,14 +20,12 @@ class Nodo
         Nodo<T>* getSig();
         Nodo<T>* getAnter();
         string toString();
-
-
-
 };
+
 
 template<class T>
 Nodo<T>::Nodo() {
-
+    info = nullptr;
 }
 
 template<class T>
