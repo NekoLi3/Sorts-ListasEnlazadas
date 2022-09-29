@@ -1,5 +1,6 @@
 #pragma once
 #include "Lista.h"
+
 template <class T>
 class Sort{
 public: 
@@ -13,6 +14,7 @@ public:
 template <class T>
 inline void Sort<T>::insertionSortAsc(Lista<T> A){
 	Iter* actual = A.root()->getSig();
+
 	for (int i = 1, n=A.size(); i < n; i++) {
 		Iter* jota = actual->getAnter();
 
@@ -38,8 +40,6 @@ inline void Sort<T>::bubleSort(Lista<T> vec){
 
 	for (int i = 0,n=vec.size(); i < n; i++){		
 		 jota = vec.root()->getSig();
-		 
-		 *jota++;
 
 		for (int j = 1; j < n - i; j++, jota=jota->getSig()) {
 
@@ -52,5 +52,4 @@ inline void Sort<T>::bubleSort(Lista<T> vec){
 		}
 
 	}
-	cout << vec.toString();
 }

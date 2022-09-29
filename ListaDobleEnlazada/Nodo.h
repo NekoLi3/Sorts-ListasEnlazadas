@@ -2,10 +2,9 @@
 #include <iostream>
 #include <sstream>
  using namespace std;
-    template <class  T>
 
-class Nodo
-{
+template <class  T>
+class Nodo{
 
     private:
         T* info;
@@ -21,18 +20,12 @@ class Nodo
         Nodo<T>* getSig();
         Nodo<T>* getAnter();
         string toString();
-
-        //void operator++(int i){
-        //    this = this->getSig();
-        //}
-        void operator++(int i);
-
 };
 
 
 template<class T>
 Nodo<T>::Nodo() {
-
+    info = nullptr;
 }
 
 template<class T>
@@ -72,18 +65,6 @@ Nodo<T>* Nodo<T>::getAnter()
 template<class T>
 string Nodo<T>::toString() {
     return getInfo()->toString();
-}
-
-template<class T>
-inline void Nodo<T>::operator++(int i){
-    Nodo<T>* h = this->getAnter()->getSig();
-    this->setInfo(this->getSig()->getInfo());
-
-    this->setSig(this->getSig()->getSig());
-    this->setAnter(h);
-
-    //return this->getSig();
-
 }
 
 template<class T>

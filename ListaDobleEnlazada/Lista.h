@@ -38,6 +38,7 @@ Lista<T>::Lista() {
     aux = new Nodo<T>;
     raiz->setSig(aux);
     aux->setAnter(raiz);
+    siz = 0;
 }
 
 template<class T>
