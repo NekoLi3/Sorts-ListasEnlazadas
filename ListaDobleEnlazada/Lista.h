@@ -48,7 +48,7 @@ Lista<T>::~Lista() {
         delete raiz;
     }
     else {
-        while (aux->getAnter() != nullptr) {
+        while (aux->getSig() != nullptr) {
             aux = raiz->getSig();
             while (aux->getSig() != nullptr) {
                 anterior = aux;
