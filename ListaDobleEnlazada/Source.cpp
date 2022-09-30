@@ -16,7 +16,7 @@ int main(){
 	lst.agregarFinal(new int(-91));
 	lst.agregarFinal(new int(-1));
 
-	Sort<int>::bubleSort(lst);
+	Sort<int>::selectionSort(lst);
 	cout << lst.toString();
 
 	piko.agregarIni(new int(1));
@@ -28,9 +28,7 @@ int main(){
 	piko.agregarIni(new int(173));
 	lst.agregarFinal(new int(-91));
 
-	Sort<int>::insertionSortAsc(piko);
+	Sort<int>::selectionSort(piko);
 	cout << piko.toString();
-
-
 	return 0;
 }
