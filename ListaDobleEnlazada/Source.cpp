@@ -16,7 +16,7 @@ int main(){
 	lst.agregarFinal(new int(-91));
 	lst.agregarFinal(new int(-1));
 
-	Sort<int>::selectionSort(lst);
+	Sort<int>::mergeSort(lst);
 	cout << lst.toString();
 
 	piko.agregarIni(new int(1));
