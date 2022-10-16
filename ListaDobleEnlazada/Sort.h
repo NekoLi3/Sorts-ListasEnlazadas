@@ -5,6 +5,7 @@ template <class T>
 class Sort{
 public: 
 	typedef typename Nodo<T> Iter;
+	typedef typename Lista<T>::Iterador Iterador;
 
 	static void insertionSortAsc(Lista<T> A);
 	static void bubleSort(Lista<T> lst);
@@ -13,49 +14,7 @@ public:
 	static void quickSort(Lista<T> lst);
 
 private:
-
-	struct Iterador{
-		T* valor;
-		Nodo<T>* nd;
-		int indice;
-		Iterador(Nodo<T> *nod, T* valor = nullptr) :nd(nod), valor(nod->getInfo()), indice(0){}
-		Iterador i(int i){
-			indice = i;
-			return *this;
-		}
-		void st(Nodo<T>* nod){
-			nd = nod;
-			valor = nod->getInfo();
-		}
-
-		Iterador swap(Iterador& ref){
-			T* aux = this->valor;
-			this->nd->setInfo(ref.nd->getInfo());
-			
-
-			ref.nd->setInfo(aux);
-
-			ref.st(ref.nd);
-			this->st(this->nd);
-			return *this;
-		}
-		Iterador operator++(int k){
-			this->nd = this->nd->getSig();
-			valor = nd->getInfo();
-			//indice++;
-			return *this;
-		}
-		Iterador operator--(int k){
-			this->nd = this->nd->getAnter();
-			valor = nd->getInfo();
-			//indice--;
-			return *this;
-		}
-
-	};
-	
 	static void quickSortStep(Lista<T> lst, Iterador begin, Iterador fin);
-
 };
 
 template <class T>

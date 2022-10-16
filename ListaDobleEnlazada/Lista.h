@@ -29,7 +29,20 @@ public:
     string toString();
 
     Nodo<T>* swap(Nodo<T>* ref, Nodo<T>* act);
-    
+
+    struct Iterador{
+        T* valor;
+        Nodo<T>* nd;
+        int indice;
+
+        Iterador(Nodo<T>* nod, T* valor = nullptr) :nd(nod), valor(nod->getInfo()), indice(0){}
+        Iterador i(int i);//usa un "indice" opcional
+        void stNodo(Nodo<T>* nod);
+
+        Iterador swap(Iterador& ref);
+        Iterador operator++(int k);
+        Iterador operator--(int k);
+    };
 };
 
 template<class T>
@@ -174,4 +187,48 @@ inline Nodo<T>* Lista<T>::swap(Nodo<T>* ref, Nodo<T>* act) {
     ref->setInfo(aux);
     return act;
 
+}
+
+template<class T>
+inline struct Lista<T>::Iterador Lista<T>::Iterador::i(int i){
+    indice = i;
+    return *this;
+}
+
+template<class T>
+inline void Lista<T>::Iterador::stNodo(Nodo<T>* nod){//setNodo
+    nd = nod;
+    valor = nod->getInfo();
+}
+
+template<class T>
+inline struct Lista<T>::Iterador Lista<T>::Iterador::swap(Iterador& ref){//cambia el nodo actual por uno por parametros;
+    T* aux = this->valor;
+    this->nd->setInfo(ref.nd->getInfo());
+
+    ref.nd->setInfo(aux);
+
+    ref.stNodo(ref.nd);
+    this->stNodo(this->nd);
+    return *this;
+}
+
+template<class T>
+inline struct Lista<T>::Iterador Lista<T>::Iterador::operator++(int k){
+
+    if(this->nd->getSig() != nullptr){
+        this->nd = this->nd->getSig();
+        valor = nd->getInfo();
+    }
+    return *this;
+}
+
+template<class T>
+inline struct Lista<T>::Iterador Lista<T>::Iterador::operator--(int k){
+
+    if(this->nd->getAnter() != nullptr){
+        this->nd = this->nd->getAnter();
+        valor = nd->getInfo();
+    }
+    return *this;
 }
