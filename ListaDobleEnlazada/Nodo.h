@@ -55,8 +55,7 @@ Nodo<T>* Nodo<T>::getSig() {
 }
 
 template<class T>
-Nodo<T>* Nodo<T>::getAnter()
-{
+Nodo<T>* Nodo<T>::getAnter(){
     return anter;
 }
 
