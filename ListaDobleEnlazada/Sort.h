@@ -35,7 +35,6 @@ inline void Sort<T>::insertionSortAsc(Lista<T> A){
 		} 
 
 		actual = actual->getSig();
-
 	}
 }
 
@@ -56,7 +55,6 @@ inline void Sort<T>::bubleSort(Lista<T> vec){
 
 			}
 		}
-
 	}
 }
 
@@ -68,7 +66,6 @@ void Sort<T>::selectionSort(Lista<T> vec){
 
 	Iter* minVal = jota;
 
-	
 	for (int i = 0, n=vec.size(); idei != vec.end()->getAnter(); i++, idei=idei->getSig()) {
 		//valor minimo en el vec sin orden
 		minVal = idei;
@@ -90,7 +87,7 @@ void Sort<T>::selectionSort(Lista<T> vec){
 
 template<class T>
 inline void Sort<T>::quickSort(Lista<T> lst){
-	if(lst.size() <= 1)return;
+	if(lst.size() <= 1) return;
 	quickSortStep(lst, Iterador(lst.root()), Iterador(lst.end()->getAnter()).i(lst.size()-1));
 }
 
@@ -103,50 +100,25 @@ inline void Sort<T>::quickSortStep(Lista<T> lst, Iterador a, Iterador b){
 	r.i(b.indice);
 	l.i(a.indice);
 	int i=a.indice, j=b.indice;
-	if(a.nd == b.nd) return;
-
-	if(l.nd == lst.end() || r.nd == lst.root())return;
 
 	while(i<j){
 
-		while(*l.valor<=pivot && i<j){ 
-			l++, i++;
-		}
+		while(*l.valor<=pivot && i<j) l++, i++;
 
-		while(*r.valor > pivot && r.nd!=l.nd){
-			r--,j--;
-		}
+		while(*r.valor > pivot && r.nd!=l.nd) r--,j--;
 
-
-		if(i<j){ //swap
-
-			l.swap(r);
-
-		}
+		if(i<j)	l.swap(r);
 	}
 
 	l.i(i);
 	r.i(j);
 
-	if(pivot > *r.valor){
-		r++;
-	}
+	if(pivot > *r.valor) r++;
+
 	lst.agregar(r.nd, new T(*a.valor));
 	a++;
 	lst.borrar(a.nd->getAnter());
 
-	//lst.agregar(l.nd, new T(*a.valor));
-	//a++;
-	//lst.borrar(a.nd->getAnter());
-	//
-	//lst.borrarIni();
-	//cout << lst.toString();
-	if(a.indice < j - 1){
-		quickSortStep(lst, a, Iterador(r.nd->getAnter()).i(r.indice-1));
-	}
-	if(j + 1 < b.indice){
-		quickSortStep(lst, Iterador(r.nd).i(r.indice), b);
-	}
-
-	
-}
+	if(a.indice < j - 1) quickSortStep(lst, a, Iterador(r.nd->getAnter()).i(r.indice-1));
+	if(j < b.indice) quickSortStep(lst, Iterador(r.nd).i(r.indice), b);	// arreglado 
+}																		//al tener una lista de "4,9,8" no ordenaba

@@ -3,22 +3,15 @@
 
 int main(){
 	Lista<int> idk;
-	idk.agregarFinal(new int(7));
-	idk.agregarFinal(new int(3));
-	idk.agregarFinal(new int(20));
-	idk.agregarFinal(new int(100));
-	idk.agregarFinal(new int(-20));
-	idk.agregarFinal(new int(34));
-	idk.agregarFinal(new int(34));
-	idk.agregarFinal(new int(14));
-	idk.agregarFinal(new int(3));
-	idk.agregarFinal(new int(152));
-	idk.agregarFinal(new int(-20));
-	idk.agregarFinal(new int(33));
-	idk.agregarFinal(new int(39));
-	idk.agregarFinal(new int(90));
-	idk.agregarFinal(new int(332));
-	idk.agregarFinal(new int(1532));
+	idk.agregarFinal(new int(8));
+	idk.agregarFinal(new int(10));
+	idk.agregarFinal(new int(9));
+	idk.agregarFinal(new int(28));
+	idk.agregarFinal(new int(30));
+	idk.agregarFinal(new int(49));
+	idk.agregarFinal(new int(28));
+	idk.agregarFinal(new int(150));
+	idk.agregarFinal(new int(966));
 
 	Sort<int>::quickSort(idk);
 	cout << idk.toString();

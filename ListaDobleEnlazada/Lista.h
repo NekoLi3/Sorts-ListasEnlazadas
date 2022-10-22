@@ -1,7 +1,6 @@
 #pragma once
 #include <sstream>
 #include <string>
-
 #include "Nodo.h"
 
 template<class T>
@@ -10,6 +9,7 @@ private:
     Nodo<T>* raiz;
     Nodo<T>* aux;
     int siz;
+
 public:
     Lista();
     ~Lista();
@@ -59,8 +59,9 @@ Lista<T>::~Lista() {
     Nodo<T>* anterior = nullptr;
     if (raiz->getSig() == nullptr) {
         delete raiz;
-    }
-    else {
+
+    }else{
+
         while (aux->getSig() != nullptr) {
             aux = raiz->getSig();
             while (aux->getSig() != nullptr) {
@@ -75,7 +76,7 @@ Lista<T>::~Lista() {
 }
 
 template<class T>
-bool Lista<T>::estaVacia() {
+bool Lista<T>::estaVacia(){
     return (raiz->getSig() == aux);
 }
 
@@ -129,7 +130,6 @@ void Lista<T>::agregar(Nodo<T>* ref,T* valor){
 template<class T>
 void Lista<T>::agregarIni(T* valor) {
     agregar(raiz->getSig(), valor);
-
 }
 
 template<class T>
