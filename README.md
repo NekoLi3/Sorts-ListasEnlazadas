@@ -1,7 +1,6 @@
-#Sorts-ListasEnlazadas
-<T>
-Different sorts with linked list <NO STL>
-</T>
+# Sorts-ListasEnlazadas
+
+## Different sorts with linked list <NO STL>
 
 - Quick sort
 - Bubble sort
